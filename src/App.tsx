@@ -12,6 +12,7 @@ import SubCategoryPage from './store/pages/allCategory/subcategoryPage/subCatego
 import BrandPage from './store/pages/allBrands/brandPage/brandPage'
 import ColorPage from './store/pages/allBrands/colorPage/colorPage'
 import FlashSalePage from './store/pages/flashSale/flashSalePage'
+import Notificationss from './store/pages/notification/notificationss'
 
 const App = () => {
   const router = createBrowserRouter([
@@ -66,6 +67,10 @@ const App = () => {
          {
           path:"/flashSalePage",
           element:<FlashSalePage/>
+        },
+        {
+          path:"/notificationss",
+          element:<Notificationss/>
         },
 
       ]
