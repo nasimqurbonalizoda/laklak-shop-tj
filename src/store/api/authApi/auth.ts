@@ -10,15 +10,15 @@ export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     register: build.mutation<
       AuthResponse<{ token: string }>, 
-      { userName: string; phoneNumber: string; email: string; password: string; confirmPassword: string }
-    >({
+      { userName: string; phoneNumber: string; email: string; password: string; confirmPassword: string }>({
       query: (body) => ({
         url: '/Account/register',
         method: 'POST',
         body,
       }),
     }),
-    login: build.mutation<AuthResponse<{ token: string }>, { email: string; password: string }>({
+    
+    login: build.mutation<AuthResponse<{ token: string }>, { userName: string; password: string }>({
       query: (body) => ({
         url: '/Account/login',
         method: 'POST',

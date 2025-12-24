@@ -1,18 +1,19 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './layout/layout'
-import HomePage from './store/pages/homePage/homePage'
-import SignupPage from './store/pages/registerPage/signupPage/signupPage'
-import LoginPage from './store/pages/registerPage/loginPage/loginPage'
-import CartPage from './store/pages/cartPage/cartPage'
-import AboutPage from './store/pages/aboutPage/aboutPage'
-import WishlistPage from './store/pages/wishlistPage/wishlistPage'
-import BlogPage from './store/pages/blogPage/blogPage'
-import CategoryPage from './store/pages/allCategory/categoryPage/categoryPage'
-import SubCategoryPage from './store/pages/allCategory/subcategoryPage/subCategoryPage'
-import BrandPage from './store/pages/allBrands/brandPage/brandPage'
-import ColorPage from './store/pages/allBrands/colorPage/colorPage'
-import FlashSalePage from './store/pages/flashSale/flashSalePage'
-import Notificationss from './store/pages/notification/notificationss'
+import HomePage from './pages/homePage/homePage'
+import SignupPage from './pages/registerPage/signupPage/signupPage'
+import LoginPage from './pages/registerPage/loginPage/loginPage'
+import CartPage from './pages/cartPage/cartPage'
+import AboutPage from './pages/aboutPage/aboutPage'
+import WishlistPage from './pages/wishlistPage/wishlistPage'
+import BlogPage from './pages/blogPage/blogPage'
+import CategoryPage from './pages/allCategory/categoryPage/categoryPage'
+import SubCategoryPage from './pages/allCategory/subcategoryPage/subCategoryPage'
+import BrandPage from './pages/allBrands/brandPage/brandPage'
+import ColorPage from './pages/allBrands/colorPage/colorPage'
+import FlashSalePage from './pages/flashSale/flashSalePage'
+import Notificationss from './pages/notification/notificationss'
+import SubCategoryByIdPage from './pages/allCategory/subcategoryPage/subCategoryByIdPage'
 
 const App = () => {
   const router = createBrowserRouter([
@@ -37,7 +38,7 @@ const App = () => {
           element:<CartPage/>
         },
         {
-          path:"/aboutPage",
+          path:"/aboutPage/:id",
           element:<AboutPage/>
         },
         {
@@ -53,8 +54,12 @@ const App = () => {
           element:<CategoryPage/>
         },
         {
-          path:"/subCategoryPage",
+          path:"/subCategoryPage/:categoryId",
           element:<SubCategoryPage/>
+        },
+        {
+          path:"/subCategoryPage/:id",
+          element:<SubCategoryByIdPage/>
         },
         {
           path:"/brandPage",

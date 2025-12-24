@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+Smart Shop
+📱 Project Overview
+Smart Shop is an online store dedicated to selling modern technology and high-quality gadgets. On our site, you can purchase the latest models of smartphones, laptops, tablets, headphones, and other tech devices at competitive prices.
+The project is built using a modern frontend stack:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React (v18+) — for the user interface
+TypeScript — for strict typing and reducing errors
+RTK Query (Redux Toolkit Query) — for server state management (API caching, refetching, pagination, etc.)
+React Router — for navigation
+Tailwind CSS / SCSS — for fast and modern styling
+Vite — for fast and optimized builds
 
-Currently, two official plugins are available:
+🛠 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Product catalog with filters (price, brand, category, specifications)
+Detailed product pages with images, descriptions, and reviews
+Shopping cart with data persistence in localStorage
+Order form with validation
+Pagination and infinite scroll for product listings
+Data caching with RTK Query (reduces API requests)
+Fully responsive design — works perfectly on mobile and tablet
 
-## React Compiler
+🚀 Getting Started
+Bash# Clone the repository
+git clone https://github.com/username/smart-shop.git
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Navigate to the project folder
+cd smart-shop
 
-## Expanding the ESLint configuration
+# Install dependencies
+npm install
+# or
+yarn install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Start the development server
+npm run dev
+# or
+yarn dev
+The app will be available at http://localhost:5173.
+🗂 Project Structure
+textsrc/
+├── api/          # RTK Query endpoints and baseQuery
+├── app/          # Redux store and configuration
+├── components/   # Reusable components (Header, Footer, Card, etc.)
+├── features/     # Slices and RTK Query APIs
+├── hooks/        # Custom hooks (typed useAppSelector, useAppDispatch)
+├── pages/        # Main pages (Home, Catalog, Product, Cart)
+├── types/        # TypeScript types (Product, CartItem, etc.)
+├── utils/        # Helper functions
+└── assets/       # Images, icons
+🔄 API
+The project works with a mock API (e.g., JSON server or fakestoreapi.com). API configuration is located in src/api/baseApi.ts.
+To connect to your own backend, simply update the baseUrl.
+🎨 Design
+The design is minimalist and modern, using primary colors: black, white, dark blue, with green/orange accents. All components are fully responsive.
+🤝 Author
+This project was created by me as a portfolio piece and to practice RTK Query. Feedback and suggestions are always welcome!
+Contact:
+Email: your.odiljonalijon75@gamil.com
+Telegram: @Alizoda_N5
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+⭐ If you like the project, don't forget to star it! 😊

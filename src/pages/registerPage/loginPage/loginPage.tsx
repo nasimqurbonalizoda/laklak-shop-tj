@@ -1,6 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../../../store/api/authApi/auth";
+import { useState } from "react";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+    const [login] = useLoginMutation();
+  
+    const [form, setForm] = useState({
+      userName: "",
+      password: "",
+    });
+  
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    };
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      try {
+        const res = await login({
+          userName: form.userName,
+          password: form.password,
+        }).unwrap();
+        console.log( res);
+        localStorage.setItem("token", res.data); 
+          navigate("/");
+      } catch (error) {
+        console.error( error);
+      }
+    };
+  
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -12,16 +40,18 @@ const LoginPage = () => {
         </p>
 
         <div className="bg-white py-8 px-4 shadow-lg rounded-lg sm:px-10">
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Электронная почта
+                Username
               </label>
               <input
                 id="email"
-                type="email"
+                type="text"
+                name="userName"
+                onChange={handleChange}
                 autoComplete="email"
-                placeholder="johndoe@example.com"
+                placeholder="name...."
                 className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-500"
               />
             </div>
@@ -33,12 +63,14 @@ const LoginPage = () => {
                 <input
                   id="password"
                   type="password"
+                  name="password"
+                  onChange={handleChange}
                   autoComplete="current-password"
                   placeholder="Пароль"
                   className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
                 <button
-                  type="button"
+                  type="submit"
                   className="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-500 hover:text-gray-700"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useRegisterMutation } from "../../../api/authApi/auth";
+import { useRegisterMutation } from "../../../store/api/authApi/auth";
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const SignupPage = () => {
       } else {
         console.error("no token");
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error( error);
     }
   };

@@ -1,30 +1,13 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Home, Grid3X3, ShoppingCart, Heart, User } from "lucide-react";
-import logo from "../assets/image copy.png"
+import logo from "../assets/image copy 2.png"
 import { useState } from "react";
-import { Package, Smartphone, Book, Baby, Footprints, Gift, Dumbbell, Palette, Truck, Dog, Gem, Wrench, Trees, HeartPulse, PenTool, Shirt, ShoppingBag } from "lucide-react";
+import { useGetCategoriesQuery } from "../store/api/categoryApi.ts/categoryApi";
 
-const categories = [
-  { icon: Package, label: "Продукты питания" },
-  { icon: Home, label: "Дом" },
-  { icon: Smartphone, label: "Электроника" },
-  { icon: Book, label: "Книги" },
-  { icon: Baby, label: "Детские товары" },
-  { icon: Footprints, label: "Обувь" },
-  { icon: Gift, label: "Подарки" },
-  { icon: Dumbbell, label: "Спорт и отдых" },
-  { icon: Palette, label: "Красота" },
-  { icon: Truck, label: "Мебель" },
-  { icon: Dog, label: "Зоотовары" },
-  { icon: Gem, label: "Ювелирные изделия" },
-  { icon: Wrench, label: "Для ремонта" },
-  { icon: Trees, label: "Сад и дача" },
-  { icon: HeartPulse, label: "Здоровье" },
-  { icon: PenTool, label: "Канцтовары" },
-  { icon: Shirt, label: "Одежда" },
-  { icon: ShoppingBag, label: "Ручная работа" },
-];
+
 const Layout = () => {
+  const { data: categories = [] } = useGetCategoriesQuery();
+
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
 
@@ -64,12 +47,12 @@ const Layout = () => {
                     hover:scale-110 hover:shadow-blue-500/50 
                     transition-all duration-500">
                   <img src={logo} alt="Eagle Tech "
-                    className="w-10 h-10 rounded-b-full md:w-12 md:h-12 object-contain "/>
+                    className="w-10 h-10 rounded-b-full md:w-12 md:h-12 object-contain " />
                 </div>
               </div>
               <span className="text-2xl md:text-3xl font-bold text-gray-800 
                   animate-fadeIn delay-200">
-                Eagle Tech
+                Smartshop.com
               </span>
             </Link>
 
@@ -117,7 +100,7 @@ const Layout = () => {
                 </svg>
               </Link>
               <Link to="/loginPage" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-semibold">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-semibold ">
                   U
                 </div>
                 <span className="hidden sm:block font-medium">Login / Register</span>
@@ -151,23 +134,21 @@ const Layout = () => {
               {isOpen && (
                 <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl overflow-hidden z-50">
                   <div className="max-h-96 overflow-y-auto py-2">
-                    {categories.map((category, index) => {
-                      const Icon = category.icon;
-                      const isHighlighted = category.label === " ";
-                      return (
-                        <button
-                          key={index}
-                          onClick={() => setIsOpen(false)}
-                          className={`w-full flex items-center gap-4 px-5 py-3 transition ${isHighlighted
-                              ? "bg-yellow-100 hover:bg-yellow-200"
-                              : "hover:bg-gray-50"
-                            }`}
-                        >
-                          <Icon className="w-6 h-6 text-blue-600 flex-shrink-0" />
-                          <span className="text-gray-800 font-medium text-left">{category.label}</span>
-                        </button>
-                      );
-                    })}
+
+                    {categories.map((category) => (
+                      <Link key={category.id}
+                        to={`/subCategoryPage/${category.id}`}
+                        className="group block">
+                        <h3 className="text-base font-semibold text-gray-800 line-clamp-2 group-hover:text-blue-600 transition">
+                          {category.categoryName}
+                        </h3>
+                        {category.subCategories.length > 0 && (
+                          <p className="text-xs text-gray-500 mt-2">
+                            {category.subCategories.length} items
+                          </p>
+                        )}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               )}
@@ -251,10 +232,10 @@ const Layout = () => {
           <div>
             <h3 className="text-white font-bold text-lg mb-5">My Account</h3>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/login" className="hover:text-white transition">Login</Link></li>
-              <li><Link to="/orders" className="hover:text-white transition">Order History</Link></li>
-              <li><Link to="/wishlist" className="hover:text-white transition">Wishlist</Link></li>
-              <li><Link to="/track" className="hover:text-white transition">Track Order</Link></li>
+              <li><Link to="/loginPage" className="hover:text-white transition">Login</Link></li>
+              <li><Link to="" className="hover:text-white transition">Order History</Link></li>
+              <li><Link to="/wishlistPage" className="hover:text-white transition">Wishlist</Link></li>
+              <li><Link to="" className="hover:text-white transition">Track Order</Link></li>
             </ul>
           </div>
 
@@ -265,25 +246,25 @@ const Layout = () => {
                 <Link to="/signupPage" className="hover:text-white transition">Become a Seller</Link>
                 <span className="bg-yellow-500 text-black px-2 py-1 rounded text-xs font-bold cursor-pointer">Apply Now</span>
               </li>
-              <li><Link to="/seller-login" className="hover:text-white transition">Seller Panel Login</Link></li>
+              <li><Link to="/signupPage" className="hover:text-white transition">Seller Panel Login</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-white font-bold text-lg mb-5">Delivery Partner</h3>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/delivery-login" className="hover:text-white transition">Delivery Panel Login</Link></li>
+              <li><Link to="/loginPage" className="hover:text-white transition">Delivery Panel Login</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-10 border-t border-gray-800 pt-8 text-center text-sm">
           <div className="flex justify-center space-x-6 mb-4">
-            <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
+            <Link to="" className="hover:text-white transition">Privacy Policy</Link>
             <span>|</span>
-            <Link to="/terms" className="hover:text-white transition">Terms & Conditions</Link>
+            <Link to="" className="hover:text-white transition">Terms & Conditions</Link>
             <span>|</span>
-            <Link to="/return" className="hover:text-white transition">Return Policy</Link>
+            <Link to="" className="hover:text-white transition">Return Policy</Link>
           </div>
           <p>&copy; 2025 LokLok. All rights reserved.</p>
         </div>
