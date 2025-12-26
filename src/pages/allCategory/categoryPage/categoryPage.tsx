@@ -13,11 +13,9 @@ const CategoryPage = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
           {categories.map((category) => (
-            <Link
-              key={category.id}
-              to={`/subCategoryPage/${category.id}`}
-              className="group block"
-            >
+            <Link  key={category.id}
+              to={`/categoryPage/${category.id}`}
+              className="group block">
               <div className="bg-white rounded-2xl p-6 flex flex-col items-center text-center shadow-md hover:shadow-2xl transition-all duration-600 transform hover:-translate-y-1">
                 <div className="w-32 h-32 mb-6 bg-gray-100 rounded-full overflow-hidden border-4 border-white shadow-lg">
                   <img

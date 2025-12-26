@@ -18,7 +18,7 @@ export const authApi = baseApi.injectEndpoints({
       }),
     }),
     
-    login: build.mutation<AuthResponse<{ token: string }>, { userName: string; password: string }>({
+    login: build.mutation<AuthResponse<string>, { userName: string; password: string }>({
       query: (body) => ({
         url: '/Account/login',
         method: 'POST',

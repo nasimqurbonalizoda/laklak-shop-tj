@@ -1,26 +1,14 @@
-import { useParams } from "react-router-dom";
-import { useGetProductByIdQuery } from "../../store/reducer/reduxSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { useGetProductByIdQuery, type Product } from "../../store/reducer/reduxSlice";
 import { useState } from "react";
 import { useAddToCartMutation } from "../../store/api/cartApi/cartApi";
 
 
-interface ProductImage {
-  id: number;
-  imageName: string;
-}
 
-interface Product {
-  id: number;
-  brand: string;
-  color: string;
-  productInMyCart: boolean;
-  images: ProductImage[];
-  price: number;
-  discountPrice: number;
-}
 
 
 const AboutPage = () => {
+  const navigate=useNavigate()
   const { id } = useParams<{ id: string }>();
   const { data } = useGetProductByIdQuery(Number(id));
   const [quantity, setQuantity] = useState(1);
@@ -30,18 +18,26 @@ const AboutPage = () => {
   const handleAddToCart = async (productId: number) => {
     try {
       await addToCart(productId).unwrap();
+      alert("Маҳсулот ба корзина илова шуд!");
     } catch (error) {
       console.error(error);
     }
   };
 
+
   const product: Product | undefined = data?.data;
+
+  if (!product) {
+    return <p>Loading product...</p>; 
+  }
+
+  console.log("Product ID:", product.id);
 
   if (!product) return ["nichego ni naydeno !!!"];
 
   const totalPrice = (product.discountPrice * quantity).toFixed(2);
   const availableStock = 91;
-  console.log(product.images);
+  console.log(data);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -49,8 +45,10 @@ const AboutPage = () => {
         <div className="md:flex">
           <div className="md:w-1/2 bg-gray-100 p-8 flex items-center justify-center">
             <img
-              src={`https://store-api.softclub.tj/images/${product?.images.length}`}
-              alt="user"
+              src={product?.images?.[0]?.images
+                ? `https://store-api.softclub.tj/images/${product.images[0].images}`
+                : "/placeholder.jpg"}
+              alt={product.brand}
               className="max-w-full max-h-96 object-contain rounded-lg"
             />
           </div>
@@ -58,7 +56,7 @@ const AboutPage = () => {
 
             <div className="relative">
               <div className="absolute -left-4 -top-4 bg-orange-500 text-white px-8 py-4 text-2xl font-bold rounded-r-lg shadow-md">
-                {product.productName}
+                {product.brand}
               </div>
               <div className="mt-12">
                 <span className="inline-block bg-orange-500 text-white px-4 py-2 rounded-lg text-lg font-medium">
@@ -162,8 +160,9 @@ const AboutPage = () => {
             </div>
             <div className="flex gap-4 mt-8">
               <button onClick={(e) => {
-                e.stopPropagation();handleAddToCart(product.id); }}
-                 className="flex-1 bg-yellow-500 text-white py-4 rounded-lg font-medium hover:bg-yellow-600 transition flex items-center justify-center gap-2">
+                e.stopPropagation(); handleAddToCart(product.id);
+              }}
+                className="flex-1 bg-yellow-500 text-white py-4 rounded-lg font-medium hover:bg-yellow-600 transition flex items-center justify-center gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -180,7 +179,7 @@ const AboutPage = () => {
                 </svg>
                 В корзину
               </button>
-              <button className="flex-1 bg-blue-600 text-white py-4 rounded-lg font-medium hover:bg-blue-700 transition">
+              <button onClick={()=> navigate("signupPage") } className="flex-1 bg-blue-600 text-white py-4 rounded-lg font-medium hover:bg-blue-700 transition">
                 Купить сейчас
               </button>
             </div>

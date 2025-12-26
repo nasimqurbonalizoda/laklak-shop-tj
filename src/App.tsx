@@ -14,6 +14,7 @@ import ColorPage from './pages/allBrands/colorPage/colorPage'
 import FlashSalePage from './pages/flashSale/flashSalePage'
 import Notificationss from './pages/notification/notificationss'
 import SubCategoryByIdPage from './pages/allCategory/subcategoryPage/subCategoryByIdPage'
+import Checkout from './pages/checkoutPage/checkout'
 
 const App = () => {
   const router = createBrowserRouter([
@@ -54,7 +55,11 @@ const App = () => {
           element:<CategoryPage/>
         },
         {
-          path:"/subCategoryPage/:categoryId",
+          path:"/checkoutPage",
+          element:<Checkout/>
+        },
+        {
+          path:"/categoryPage/:categoryId",
           element:<SubCategoryPage/>
         },
         {

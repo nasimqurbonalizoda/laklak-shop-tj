@@ -12,13 +12,15 @@ export interface CartProduct {
 }
 
 export interface CartResponse {
-  productsInCart: CartProduct[];
+  data :{
+    productsInCart: CartProduct[];
+  }
 }
 
 export const cartApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
 
-    getCart: build.query<CartResponse[], void>({
+    getCart: build.query<CartProduct[], void>({
       query: () => '/Cart/get-products-from-cart',
       providesTags: ['Cart'],
     }),

@@ -1,6 +1,6 @@
-Smart Shop
+Noyob Shop
 📱 Project Overview
-Smart Shop is an online store dedicated to selling modern technology and high-quality gadgets. On our site, you can purchase the latest models of smartphones, laptops, tablets, headphones, and other tech devices at competitive prices.
+Noyob Shop is an online store dedicated to selling modern technology and high-quality gadgets. On our site, you can purchase the latest models of smartphones, laptops, tablets, headphones, and other tech devices at competitive prices.
 The project is built using a modern frontend stack:
 
 React (v18+) — for the user interface

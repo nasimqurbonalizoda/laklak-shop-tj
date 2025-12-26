@@ -16,8 +16,8 @@ export const categoryApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getCategories: builder.query<Category[], void>({
       query: () => '/Category/get-categories',
-      transformResponse: (response: any): Category[] => {
-        return response.data || [];
+      transformResponse: (data: any): Category[] => {
+        return data.data || [];
       },
       providesTags: ['Product'],
     }),

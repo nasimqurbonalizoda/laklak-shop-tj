@@ -129,7 +129,7 @@ const BlogPage = () => {
                     </button>
                   </div>
 
-                  <div className="h-64 bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center p-6">
+                  <div className="h-64 bg-linear-to-b from-gray-50 to-gray-100 flex items-center justify-center p-6">
                     <Link to={`/aboutPage/${product.id}`}>
                       <img
                         src={`https://store-api.softclub.tj/images/${product.image}`}
@@ -164,7 +164,7 @@ const BlogPage = () => {
                         e.stopPropagation();
                         handleAddToCart(product.id);
                       }}
-                      className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-2xl hover:from-blue-700 hover:to-indigo-700 transition shadow-lg hover:shadow-xl">
+                      className="w-full py-4 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-2xl hover:from-blue-700 hover:to-indigo-700 transition shadow-lg hover:shadow-xl">
                       Add to Cart
                     </button>
                   </div>

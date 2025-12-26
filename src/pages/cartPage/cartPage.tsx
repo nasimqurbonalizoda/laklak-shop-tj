@@ -1,16 +1,18 @@
+
+import { useNavigate } from "react-router-dom";
 import {useClearCartMutation,useDecreaseQuantityMutation,useGetCartQuery,
   useIncreaseQuantityMutation,useRemoveFromCartMutation,} from "../../store/api/cartApi/cartApi";
 
-type CartItem = {
-  id: number;
-  quantity: number;
-  product: {
-    id: number;
-    productName: string;
-    price: number;
-    image: string;
-  };
-};
+// type CartItem = {
+//   id: number;
+//   quantity: number;
+//   product: {
+//     id: number;
+//     productName: string;
+//     price: number;
+//     image: string;
+//   };
+// };
 
 const CartPage = () => {
   const { data, isLoading, isError } = useGetCartQuery();
@@ -18,6 +20,8 @@ const CartPage = () => {
   const [decrease] = useDecreaseQuantityMutation();
   const [remove] = useRemoveFromCartMutation();
   const [clear] = useClearCartMutation();
+
+  const navigate=useNavigate()
 
   if (isLoading) {
     return (
@@ -34,11 +38,11 @@ const CartPage = () => {
       </div>
     );
   }
-
-  const cartItems: CartItem[] = data?.data?.[0]?.productsInCart ?? [];
+  // @ts-ignore
+  const cartItems: any = data?.data?.[0]?.productsInCart ?? [];
   const total = cartItems.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,0);
-
+    (sum:any, item:any) => sum + item.product.price * item.quantity,0);
+  
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -50,14 +54,14 @@ const CartPage = () => {
 
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
 
-          <div className="hidden md:grid grid-cols-12 gap-6 px-8 py-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-sm uppercase tracking-wider">
+          <div className="hidden md:grid grid-cols-12 gap-6 px-8 py-6 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-semibold text-sm uppercase tracking-wider">
             <div className="col-span-5">Product</div>
             <div className="col-span-2 text-center">Price</div>
             <div className="col-span-3 text-center">Quantity</div>
             <div className="col-span-2 text-right">Subtotal</div>
           </div>
 
-          {cartItems.map((item) => (
+          {cartItems.map((item:any) => (
             <div key={item.id}
               className="grid grid-cols-1 md:grid-cols-12 gap-6 px-6 md:px-8 py-8 border-b border-gray-100 hover:bg-gray-50 transition duration-200 items-center" >
               <div className="col-span-1 md:col-span-5 flex items-center gap-5">
@@ -133,7 +137,7 @@ const CartPage = () => {
               </span>
             </div>
 
-            <button className="w-full mt-6 py-5 bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-lg font-semibold rounded-xl hover:from-indigo-700 hover:to-blue-700 transition duration-300 shadow-lg">
+            <button onClick={()=> navigate("/signupPage/")} className="w-full mt-6 py-5 bg-linear-to-r from-indigo-600 to-blue-600 text-white text-lg font-semibold rounded-xl hover:from-indigo-700 hover:to-blue-700 transition duration-300 shadow-lg">
               Proceed to Checkout
             </button>
           </div>

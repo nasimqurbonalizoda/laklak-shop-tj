@@ -11,8 +11,9 @@ interface WishlistProduct {
 }
 
 const WishlistPage = () => {
-  const { data: wishlistData } = useGetWishlistQuery();
-  const products: WishlistProduct[] = wishlistData?.products || [];
+ const { data = [] } = useGetWishlistQuery();
+const products: WishlistProduct[] = data;
+console.log("wishlist data:", data);
 
   if (products.length === 0) {
     return (
