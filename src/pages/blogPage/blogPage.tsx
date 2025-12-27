@@ -95,7 +95,7 @@ const BlogPage = () => {
                   <p className="text-white/80">Founder & CEO</p>
                   <div className="flex justify-center gap-4 mt-4">
                     <a href="#" className="text-white hover:text-blue-400 transition"><FaTwitter /></a>
-                    <a href="#" className="text-white hover:text-pink-400 transition"><FaInstagram /></a>
+                    <a href="https://www.instagram.com/saiddamir.js/" className="text-white hover:text-pink-400 transition"><FaInstagram /></a>
                     <a href="#" className="text-white hover:text-blue-600 transition"><FaLinkedinIn /></a>
                   </div>
                 </div>
@@ -114,7 +114,7 @@ const BlogPage = () => {
                   <p className="text-white/80">Operations Director</p>
                   <div className="flex justify-center gap-4 mt-4">
                     <a href="#" className="text-white hover:text-blue-400 transition"><FaTwitter /></a>
-                    <a href="#" className="text-white hover:text-pink-400 transition"><FaInstagram /></a>
+                    <a href="https://www.instagram.com/khabib_nurmagomedov/?hl=ru" className="text-white hover:text-pink-400 transition"><FaInstagram /></a>
                     <a href="#" className="text-white hover:text-blue-600 transition"><FaLinkedinIn /></a>
                   </div>
                 </div>
