@@ -14,7 +14,7 @@ import ColorPage from './pages/allBrands/colorPage/colorPage'
 import FlashSalePage from './pages/flashSale/flashSalePage'
 import Notificationss from './pages/notification/notificationss'
 import SubCategoryByIdPage from './pages/allCategory/subcategoryPage/subCategoryByIdPage'
-import Checkout from './pages/checkoutPage/checkout'
+import Checkout from './pages/checkoutPage/checkoutPage'
 
 const App = () => {
   const router = createBrowserRouter([

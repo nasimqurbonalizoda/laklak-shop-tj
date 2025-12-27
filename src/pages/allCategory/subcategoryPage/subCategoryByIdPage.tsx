@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaFilter, FaSort, FaShoppingCart, FaHeart, FaEye, FaStar, FaFire, FaTag, FaChevronRight } from "react-icons/fa";
 import { useAddToCartMutation } from "../../../store/api/cartApi/cartApi";
+import toast from "react-hot-toast";
 
 interface Product {
   id: number;
@@ -287,7 +288,13 @@ const navigate=useNavigate()
                       )}
                     </div>
 
-                    <button onClick={()=> addToCart(product.id)}  className="w-full bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold py-3 rounded-xl shadow hover:shadow-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 flex items-center justify-center gap-2">
+                    <button onClick={() => {
+                        addToCart(product.id);
+                        toast.success(`${product.productName} add to cart succesfully! 🛒`, {
+                          duration: 3000,
+                          icon: '✅',
+                        })
+                      }}  className="w-full bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold py-3 rounded-xl shadow hover:shadow-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 flex items-center justify-center gap-2">
                       <FaShoppingCart /> Add to Cart
                     </button>
                   </div>
