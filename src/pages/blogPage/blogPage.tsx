@@ -91,7 +91,7 @@ const BlogPage = () => {
                   className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent pt-16 pb-6">
-                  <h3 className="text-2xl font-bold text-white">Ahmad Karimov</h3>
+                  <h3 className="text-2xl font-bold text-white">Saiddamir Saidov</h3>
                   <p className="text-white/80">Founder & CEO</p>
                   <div className="flex justify-center gap-4 mt-4">
                     <a href="#" className="text-white hover:text-blue-400 transition"><FaTwitter /></a>
