@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useRegisterMutation } from "../../../store/api/authApi/auth";
+import toast from "react-hot-toast";
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -26,7 +27,10 @@ const SignupPage = () => {
         localStorage.setItem("token", res.data.token);
       }
       navigate("/loginPage")
-      alert("register succesfully")
+      toast.success(`register succesfully`, {
+        duration: 3000,
+        icon: '✅',
+      })
     } catch (error) {
       console.error(error);
       alert("error register")

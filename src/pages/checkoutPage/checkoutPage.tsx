@@ -160,7 +160,7 @@ ${itemsText}
                     onChange={handleChange}
                     required
                     className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                    placeholder="e.g. John Doe"
+                    placeholder="your name bro "
                   />
                 </div>
 
@@ -205,7 +205,7 @@ ${itemsText}
                     className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                   >
                     <option value="cod">Cash on Delivery (COD)</option>
-                    <option value="bank">Bank Card / Humo / ALIF</option>
+                    <option value="bank">Bank Card / Humo / ALIF / D-city</option>
                   </select>
                 </div>
 
