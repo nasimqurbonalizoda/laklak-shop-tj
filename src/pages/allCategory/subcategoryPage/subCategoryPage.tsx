@@ -8,12 +8,7 @@ const SubCategoryPage = () => {
 
 
   console.log(categoryId,selectedCategory)
-  // if (isError || !selectedCategory) {
-  //   return (
-  //      <p>nichego ne naydeno !!!</p>
-  //   );
-  // }
-
+  
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
