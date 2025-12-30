@@ -64,7 +64,6 @@ const WishlistPage = () => {
           My Wishlist ❤️
         </h1>
 
-        {/* Список товаров в wishlist */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-20">
           {products.map((item) => {
             const discountPercent = item.discountPrice
@@ -132,7 +131,6 @@ const WishlistPage = () => {
           })}
         </div>
 
-        {/* Just For You */}
         <div className="flex items-center gap-5 mb-8">
           <div className="w-6 h-12 bg-red-500 rounded"></div>
           <span className="text-red-500 font-bold text-3xl">Just For You</span>
@@ -156,7 +154,7 @@ const WishlistPage = () => {
 
               <div className="p-6">
                 <h3 className="text-lg font-bold text-gray-800 line-clamp-2 mb-3">
-                  {item.productName || "Unnamed Product"}
+                  {item.productName || " Product"}
                 </h3>
                 <div className="flex items-center gap-4 mb-5">
                   <span className="text-3xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
