@@ -24,7 +24,7 @@ interface Product {
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [liked,setLiked]=useState(false)
+const [liked, setLiked] = useState<{ [key: number]: boolean }>({});
   const { data, isLoading, error } = useGetProductsQuery({
     PageNumber: 1,
     PageSize: 16,
@@ -145,12 +145,20 @@ const HomePage = () => {
                   </div>
 
                   <div className="absolute top-4 right-4 flex flex-col gap-3 z-30">
-                    <button onClick={() => setLiked(!liked)}
+                    <button
+                      onClick={() =>
+                        setLiked(prev => ({
+                          ...prev,
+                          [el.id]: !prev[el.id],
+                        }))
+                      }
                       className={`w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center
-                         transition-all hover:scale-110
-                         ${liked ? "text-gray-600" : "text-red-700"}`}>
+    transition-all hover:scale-110
+    ${liked[el.id] ? "text-red-700" : "text-gray-600"}`}
+                    >
                       <FaHeart />
                     </button>
+
                     <button
                       onClick={() => navigate(`/aboutPage/${el.id}`)}
                       className="w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center hover:text-blue-600 hover:scale-110 transition-all"
