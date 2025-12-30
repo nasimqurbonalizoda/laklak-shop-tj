@@ -29,7 +29,7 @@ const CartPage = () => {
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
         <div className="bg-white shadow-2xl rounded-2xl p-8 flex flex-col items-center gap-6 max-w-md w-full">
           <img
-            src="../../../public/images (1).jpeg"
+            src="../../../images (1).jpeg"
             alt="Not found"
             className="w-60 h-auto rounded-xl"
           />
