@@ -24,6 +24,7 @@ interface Product {
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [liked,setLiked]=useState(false)
   const { data, isLoading, error } = useGetProductsQuery({
     PageNumber: 1,
     PageSize: 16,
@@ -80,7 +81,6 @@ const HomePage = () => {
           >
             {[
               "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da",
-              "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
               "https://images.unsplash.com/photo-1556742044-3c52d6e88c62",
               "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6"
             ].map((img, index) => (
@@ -103,30 +103,31 @@ const HomePage = () => {
         </div>
 
         <div className="mb-16">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-10">
-            <div className="flex items-center gap-4 mb-6 md:mb-0">
-              <div className="p-4 bg-linear-to-r from-blue-500 to-cyan-500 rounded-3xl shadow-xl">
-                <FaFireAlt className="text-4xl text-white" />
+          <div className="mb-16">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-10">
+              <div className="flex items-center gap-4 mb-6 md:mb-0">
+                <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl shadow-lg">
+                  <FaFireAlt className="text-3xl text-white" />
+                </div>
+                <h1 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  Flash Sale
+                </h1>
               </div>
-              <h1 className="text-4xl md:text-5xl font-black bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                Flash Sale
-              </h1>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl px-8 py-6 border border-white/20">
-              <div className="flex gap-4 md:gap-8">
-                {Object.entries(timeLeft).map(([key, value]) => (
-                  <div key={key} className="text-center">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-linear-to-br from-blue-600 to-cyan-600 flex items-center justify-center shadow-xl">
-                      <span className="text-2xl md:text-4xl font-bold text-white">
-                        {value.toString().padStart(2, "0")}
-                      </span>
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl shadow-lg px-6 py-4 border border-white/20">
+                <div className="flex gap-3 md:gap-5 items-center">
+                  {Object.entries(timeLeft).map(([key, value]) => (
+                    <div key={key} className="text-center">
+                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center shadow-md">
+                        <span className="text-xl md:text-2xl font-bold text-white">
+                          {value.toString().padStart(2, "0")}
+                        </span>
+                      </div>
+                      <p className="text-xs md:text-sm font-medium text-gray-600 mt-1 uppercase">
+                        {key === 'days' ? 'day' : key === 'hours' ? 'hour' : key === 'minutes' ? 'minute' : 'sekund'}
+                      </p>
                     </div>
-                    <p className="text-sm md:text-base font-semibold text-gray-700 mt-2 uppercase tracking-wider">
-                      {key}
-                    </p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -140,11 +141,14 @@ const HomePage = () => {
                   className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 relative group overflow-hidden"
                 >
                   <div className="absolute top-4 left-4 bg-linear-to-r from-red-500 to-orange-500 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg z-30">
-                    -{discountPercent}%
+                    {discountPercent}%
                   </div>
 
                   <div className="absolute top-4 right-4 flex flex-col gap-3 z-30">
-                    <button className="w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center hover:text-red-500 hover:scale-110 transition-all">
+                    <button onClick={() => setLiked(!liked)}
+                      className={`w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center
+                         transition-all hover:scale-110
+                         ${liked ? "text-gray-600" : "text-red-700"}`}>
                       <FaHeart />
                     </button>
                     <button

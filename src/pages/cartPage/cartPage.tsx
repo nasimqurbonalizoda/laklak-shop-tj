@@ -1,10 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import {
-  useClearCartMutation,
-  useDecreaseQuantityMutation,
-  useGetCartQuery,
-  useIncreaseQuantityMutation,
-  useRemoveFromCartMutation,
+  useClearCartMutation, useDecreaseQuantityMutation, useGetCartQuery,
+  useIncreaseQuantityMutation, useRemoveFromCartMutation,
 } from "../../store/api/cartApi/cartApi";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -29,9 +26,25 @@ const CartPage = () => {
 
   if (isError) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-xl text-red-600">Error loading cart</p>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+        <div className="bg-white shadow-2xl rounded-2xl p-8 flex flex-col items-center gap-6 max-w-md w-full">
+          <img
+            src="../../../public/images (1).jpeg"
+            alt="Not found"
+            className="w-60 h-auto rounded-xl"
+          />
+          <h1 className="text-2xl font-bold text-gray-800">
+            No Product
+          </h1>
+          <button
+            onClick={() => navigate("/")}
+            className="px-6 py-3 bg-blue-600 text-white rounded-xl font-medium 
+       hover:bg-blue-700 transition-all duration-300" >
+            Go to Home
+          </button>
+        </div>
       </div>
+
     );
   }
 
@@ -45,7 +58,7 @@ const CartPage = () => {
   );
 
   const handleProceedToCheckout = () => {
-    if (isCartEmpty) return; 
+    if (isCartEmpty) return;
     setShowModal(true);
   };
 
@@ -79,7 +92,7 @@ const CartPage = () => {
           <div className="bg-white rounded-2xl shadow-lg p-16 text-center">
             <div className="max-w-md mx-auto">
               <img src="../../../images.jpeg" alt="" />
-              <div/>
+              <div />
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
                 Your cart is empty
               </h2>
@@ -88,8 +101,7 @@ const CartPage = () => {
               </p>
               <button
                 onClick={() => navigate("/")}
-                className="px-10 py-5 bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-lg font-semibold rounded-xl hover:from-indigo-700 hover:to-blue-700 transition duration-300 shadow-lg"
-              >
+                className="px-10 py-5 bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-lg font-semibold rounded-xl hover:from-indigo-700 hover:to-blue-700 transition duration-300 shadow-lg">
                 Continue Shopping
               </button>
             </div>
@@ -149,8 +161,7 @@ const CartPage = () => {
                       </span>
                       <button
                         onClick={() => increase(item.id)}
-                        className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition"
-                      >
+                        className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition">
                         +
                       </button>
                     </div>

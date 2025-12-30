@@ -181,7 +181,7 @@ ${itemsText}
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Delivery Address (city, street, house) *
+                     Address (city, street, house) *
                   </label>
                   <input
                     type="text"
@@ -190,23 +190,8 @@ ${itemsText}
                     onChange={handleChange}
                     required
                     className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                    placeholder="Dushanbe, Rudaki Ave, House 45"
+                    placeholder="Dushanbe, Sohili Ave, House 22"
                   />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Payment Method
-                  </label>
-                  <select
-                    name="paymentMethod"
-                    value={formData.paymentMethod}
-                    onChange={handleChange}
-                    className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                  >
-                    <option value="cod">Cash on Delivery (COD)</option>
-                    <option value="bank">Bank Card / Humo / ALIF / D-city</option>
-                  </select>
                 </div>
 
                 <button
