@@ -5,6 +5,7 @@ import {
 } from "../../store/api/cartApi/cartApi";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import logo from "../../assets/images (1).jpeg"
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const CartPage = () => {
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
         <div className="bg-white shadow-2xl rounded-2xl p-8 flex flex-col items-center gap-6 max-w-md w-full">
           <img
-            src="../../../images (1).jpeg"
+            src={logo}
             alt="Not found"
             className="w-60 h-auto rounded-xl"
           />
