@@ -3,7 +3,7 @@ import { useAddToCartMutation } from "../../store/api/cartApi/cartApi";
 import { FaHeart, FaEye } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useGetWishlistQuery } from "../../store/api/wishlistApi/wishlist"; 
-
+import logo from "../../assets/images (1).jpeg"
 interface WishlistProduct {
   id: number;
   productName: string;
@@ -32,7 +32,7 @@ const WishlistPage = () => {
     return (
       <div className="max-w-7xl mx-auto px-4 py-32 text-center">
         <img
-          src="../../../public/images (1).jpeg" 
+          src={logo} 
           alt="Empty wishlist"
           className="mx-auto w-80 h-80 object-contain mb-10"
         />
