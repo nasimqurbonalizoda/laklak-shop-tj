@@ -48,7 +48,6 @@ const [liked, setLiked] = useState<{ [key: number]: boolean }>({});
         clearInterval(timer);
         return;
       }
-
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -131,7 +130,6 @@ const [liked, setLiked] = useState<{ [key: number]: boolean }>({});
               </div>
             </div>
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {products.map((el: Product) => {
               const discountPercent = Math.round((1 - el.discountPrice / el.price) * 100);
